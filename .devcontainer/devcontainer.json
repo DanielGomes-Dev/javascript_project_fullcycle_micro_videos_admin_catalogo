@@ -1,0 +1,34 @@
+{
+  "name": "micro-videos-admin-catalago",
+  "build": {
+    "context": "..",
+    "dockerfile": "../Dockerfile"
+  },
+
+  // Instala as dependências uma vez, depois que o container é criado
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "postCreateCommand": "npm install",
+
+  // Usuário não-root (evita arquivos do projeto com dono root)
+  "remoteUser": "node",
+
+  "customizations": {
+    "vscode": {
+      // ESLint, Prettier, GitLens, Claude Code e Reload já vêm do seu
+      // dev.containers.defaultExtensions, então aqui ficam só as do projeto
+      "extensions": ["orta.vscode-jest", "andys8.jest-snippets"],
+      "settings": {
+        "jest.jestCommandLine": "npm test --",
+        "js/ts.tsdk.path": "node_modules/typescript/lib",
+        "js/ts.implicitProjectConfig.strictNullChecks": true
+      }
+    }
+  }
+
+  // Um volume de extensões por projeto (evita conflito entre janelas abertas)
+  // "mounts": [
+  //   "source=${devcontainerId}-extensions,target=/home/node/.vscode-server/extensions,type=volume"
+  // ]
+}
