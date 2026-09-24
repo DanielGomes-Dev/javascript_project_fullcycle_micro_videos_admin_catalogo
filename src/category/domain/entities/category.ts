@@ -1,17 +1,17 @@
 import UniqueEntityId from '../../shared/domain/unique-entity-id.vo.ts';
 
 export type CategoryProperties = {
-        name: string;
-        description?: string;
-        is_active?: boolean;
-        created_at?: Date;
+    name: string;
+    description?: string;
+    is_active?: boolean;
+    created_at?: Date;
 }
 
 
 export class Category {
 
     public readonly id: UniqueEntityId;
-    
+
     constructor(
         public readonly props: CategoryProperties, id?: UniqueEntityId
     ) {
@@ -25,34 +25,34 @@ export class Category {
 
     }
 
-    
-    get name()  {
+
+    get name() {
         return this.props.name;
     }
 
-    
+
     get description() {
         return this.props.description;
     }
 
-    private set description(value: string){
+    private set description(value: string) {
         this.props.description = value ?? "";
     }
 
-    
-    get is_active()  {
+
+    get is_active() {
         return this.props.is_active;
     }
 
-    private set is_active(value: boolean){
+    private set is_active(value: boolean) {
         this.props.is_active = value ?? true;
     }
 
-    get created_at()  {
+    get created_at() {
         return this.props.created_at;
     }
 
-    private set created_at(value: Date){
+    private set created_at(value: Date) {
         this.props.created_at = value ?? new Date();
     }
 
@@ -65,7 +65,7 @@ export class Category {
 // })
 
 // const category = new Category({
-//         "name":'test', 
+//         "name":'test',
 //         "description":"test232",
 //         "is_active":true,
 //         "created_at": new Date()

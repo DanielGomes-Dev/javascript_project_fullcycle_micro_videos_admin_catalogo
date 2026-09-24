@@ -3,12 +3,12 @@ import { omit } from 'lodash'
 import UniqueEntityId from "../../shared/domain/unique-entity-id.vo.ts";
 
 
-type CategoryDate = {props: CategoryProperties, id?: UniqueEntityId}
-const datas : CategoryDate[] = [
-    {props: {name: "movie"}},
-    {props: {name: "movie"}, id: null},
-    {props: {name: "movie"}, id: undefined},
-    {props: {name: "movie"}, id: new UniqueEntityId("d6a12be6-ebca-4d7f-8048-38a45f51c65c")},
+type CategoryDate = { props: CategoryProperties, id?: UniqueEntityId }
+const datas: CategoryDate[] = [
+    { props: { name: "movie" } },
+    { props: { name: "movie" }, id: null },
+    { props: { name: "movie" }, id: undefined },
+    { props: { name: "movie" }, id: new UniqueEntityId("d6a12be6-ebca-4d7f-8048-38a45f51c65c") },
 
 ]
 
@@ -59,7 +59,7 @@ describe('Category Unit Tests', () => {
                 description: "other description",
             });
             const cat_props = omit(category.props, 'created_at')
-            
+
             expect(cat_props).toStrictEqual({
                 name: 'some name',
                 description: "other description",
@@ -69,18 +69,18 @@ describe('Category Unit Tests', () => {
         });
 
         test('should send name and is_active', () => {
-                const category = new Category({
-                    name: 'some name',
-                    is_active: false,
+            const category = new Category({
+                name: 'some name',
+                is_active: false,
 
-                });
-                const cat_props = omit(category.props, 'created_at')
-                
-                expect(cat_props).toStrictEqual({
-                    name: 'some name',
-                    description: '',
-                    is_active: false,
-                })
+            });
+            const cat_props = omit(category.props, 'created_at')
+
+            expect(cat_props).toStrictEqual({
+                name: 'some name',
+                description: '',
+                is_active: false,
+            })
         });
 
         test('should have id field', () => {
@@ -90,14 +90,14 @@ describe('Category Unit Tests', () => {
                 const category = new Category(data.props, data.id);
                 expect(category.id).toBeTruthy();
                 expect(category.id).not.toBeNull();
-                expect(category.id).not.toBeUndefined();  
+                expect(category.id).not.toBeUndefined();
                 data?.id && expect(category.id).toBe(data.id);
                 // expect(uuidValidate(category.id.id)).toBeTruthy();
                 expect(category.id).toBeInstanceOf(UniqueEntityId)
 
             }
 
-            
+
         });
     });
 
@@ -143,12 +143,12 @@ describe('Category Unit Tests', () => {
             category["is_active"] = false;
             expect(category.is_active).toBeFalsy();
 
-            
+
             category["is_active"] = undefined;
             expect(category.is_active).toBeTruthy();
         });
 
-        
+
         test('should set created_at', () => {
             const date_now = new Date();
             category["created_at"] = date_now;
