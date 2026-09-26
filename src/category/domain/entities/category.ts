@@ -1,3 +1,4 @@
+import Entity from '../../shared/domain/entity/entity.ts';
 import UniqueEntityId from '../../shared/domain/value-objects/unique-entity-id.vo.ts';
 
 export type CategoryProperties = {
@@ -8,16 +9,13 @@ export type CategoryProperties = {
 }
 
 
-export class Category {
-
-    public readonly id: UniqueEntityId;
+export class Category extends Entity<CategoryProperties> {
 
     constructor(
         public readonly props: CategoryProperties, id?: UniqueEntityId
     ) {
-
+        super(props, id)
         // Adicionar props a category
-        this.id = id || new UniqueEntityId();
         this.props.name = props.name;
         this.props.description = props.description ?? "";
         this.props.is_active = props.is_active ?? true;
@@ -25,15 +23,32 @@ export class Category {
 
     }
 
+    update(name: string, description: string) {
+        this.name = name;
+        this.description = description;
+    }
 
-    get name() {
+    activate() {
+        this.is_active = true;
+    }
+
+    deactivate() {
+        this.is_active = false;
+    }
+
+    get name(): string {
         return this.props.name;
+    }
+
+    private set name(name: string) {
+        this.props.name = name ?? "";
     }
 
 
     get description() {
         return this.props.description;
     }
+
 
     private set description(value: string) {
         this.props.description = value ?? "";
@@ -64,12 +79,12 @@ export class Category {
 //     name: "nome"
 // })
 
-// const category = new Category({
-//         "name":'test',
-//         "description":"test232",
-//         "is_active":true,
-//         "created_at": new Date()
-//     })
+const category = new Category({
+    "name": 'test',
+    "description": "test232",
+    "is_active": true,
+    "created_at": new Date()
+})
 
 
-// category.props.name
+// category.toJSON().id

@@ -91,9 +91,9 @@ describe('Category Unit Tests', () => {
                 expect(category.id).toBeTruthy();
                 expect(category.id).not.toBeNull();
                 expect(category.id).not.toBeUndefined();
-                data?.id && expect(category.id).toBe(data.id);
+                data?.id && expect(category.uniqueEntityId).toBe(data.id);
                 // expect(uuidValidate(category.id.id)).toBeTruthy();
-                expect(category.id).toBeInstanceOf(UniqueEntityId)
+                expect(category.uniqueEntityId).toBeInstanceOf(UniqueEntityId)
 
             }
 
@@ -159,5 +159,62 @@ describe('Category Unit Tests', () => {
 
         });
 
+    });
+
+    describe('Update Category', () => {
+        it('should update a category', () => {
+            const date_now = new Date()
+            const category = new Category({
+                name: "Movie",
+                description: "Some Description",
+                is_active: false,
+                created_at: date_now,
+            })
+
+            expect(category.name).toBe("Movie");
+            expect(category.description).toBe("Some Description");
+
+            category.update(
+                "new category name",
+                "new category description"
+            )
+
+            expect(category.name).toBe("new category name");
+            expect(category.description).toBe("new category description");
+        });
+    });
+
+    describe('Activate and Deactivate', () => {
+        it('should activate', () => {
+
+            const date_now = new Date()
+            const category = new Category({
+                name: "Movie",
+                description: "Some Description",
+                is_active: false,
+                created_at: date_now,
+            })
+
+            expect(category.is_active).toBe(false);
+            category.activate()
+            expect(category.is_active).toBe(true);
+
+        });
+
+        it('should deactivate', () => {
+
+            const date_now = new Date()
+            const category = new Category({
+                name: "Movie",
+                description: "Some Description",
+                is_active: true,
+                created_at: date_now,
+            })
+
+            expect(category.is_active).toBe(true);
+            category.deactivate()
+            expect(category.is_active).toBe(false);
+
+        });
     });
 });
