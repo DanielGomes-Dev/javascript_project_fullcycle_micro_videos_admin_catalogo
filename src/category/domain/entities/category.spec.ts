@@ -1,6 +1,6 @@
 import { Category, type CategoryProperties } from "./category.ts";
 import { omit } from 'lodash'
-import UniqueEntityId from "../../shared/domain/unique-entity-id.vo.ts";
+import UniqueEntityId from "../../shared/domain/value-objects/unique-entity-id.vo.ts";
 
 
 type CategoryDate = { props: CategoryProperties, id?: UniqueEntityId }

@@ -1,8 +1,10 @@
-import type {Config} from 'jest';
+import type { Config } from 'jest';
 
-const config: Config = {  
+const config: Config = {
   coverageProvider: "v8",
-  coverageReporters: ['json', 'lcov', 'text', 'clover', 'html'],
+  // coverageReporters: ['json', 'lcov', 'text', 'clover', 'html'],
+  coverageReporters: ['html', "text"],
+
   coverageDirectory: '../coverage',
   collectCoverage: true,
   collectCoverageFrom: [

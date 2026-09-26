@@ -6,9 +6,14 @@ FROM node:26-slim
 
 WORKDIR /home/node/app
 
+
+RUN apt update && apt install -y --no-install-recommends \
+    git \
+    ca-certificates \
+    default-jre
+
 # USER node -1000
 USER node
 # Pesquisar sobre users no docker
 
 CMD ["sh", "-c", "npm install && tail -f /dev/null"]
- 

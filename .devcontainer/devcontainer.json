@@ -1,23 +1,14 @@
 {
   "name": "micro-videos-admin-catalago",
-  "build": {
-    "context": "..",
-    "dockerfile": "../Dockerfile"
-  },
-
-  // Instala as dependências uma vez, depois que o container é criado
-  "features": {
-    "ghcr.io/devcontainers/features/git:1": {}
-  },
+  "service": "app",
+  "workspaceFolder": "/home/node/app",
+  "dockerComposeFile": ["../docker-compose.yaml"],
   "postCreateCommand": "npm install",
 
-  // Usuário não-root (evita arquivos do projeto com dono root)
   "remoteUser": "node",
 
   "customizations": {
     "vscode": {
-      // ESLint, Prettier, GitLens, Claude Code e Reload já vêm do seu
-      // dev.containers.defaultExtensions, então aqui ficam só as do projeto
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
@@ -32,8 +23,4 @@
     }
   }
 
-  // Um volume de extensões por projeto (evita conflito entre janelas abertas)
-  // "mounts": [
-  //   "source=${devcontainerId}-extensions,target=/home/node/.vscode-server/extensions,type=volume"
-  // ]
 }
