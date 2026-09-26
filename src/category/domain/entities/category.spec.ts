@@ -16,7 +16,7 @@ describe('Category Unit Tests', () => {
 
     describe('constructor', () => {
         test('should send all parameters', () => {
-            let created_at = new Date()
+            const created_at = new Date()
             const category = new Category({
                 name: 'some name',
                 description: "some description",

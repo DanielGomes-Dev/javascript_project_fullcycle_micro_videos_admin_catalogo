@@ -40,6 +40,5 @@ describe('UniqueEntityId Unit Tests', () => {
         expect(vo.value).toBeTruthy()
         expect(uuidValidate(vo.value)).toBeTruthy()
         expect(validateSpy).toHaveBeenCalledTimes(1);
-
     });
 });
