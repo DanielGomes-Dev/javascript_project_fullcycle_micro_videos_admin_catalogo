@@ -1,5 +1,5 @@
-import Entity from '../../shared/domain/entity/entity.ts';
-import UniqueEntityId from '../../shared/domain/value-objects/unique-entity-id.vo.ts';
+import Entity from '../../../shared/domain/entity/entity.ts';
+import UniqueEntityId from '../../../shared/domain/value-objects/unique-entity-id.vo.ts';
 
 export type CategoryProperties = {
     name: string;
