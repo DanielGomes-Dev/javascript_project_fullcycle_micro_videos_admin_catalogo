@@ -1,5 +1,5 @@
 import { v4 as uuidv4, validate as uuidValidate } from 'uuid'
-import InvalidUuidError from '../../errors/invalid-uuid.error.ts';
+import InvalidUuidError from '../errors/invalid-uuid.error.ts';
 import ValueObject from './value-object.ts';
 
 

@@ -1,4 +1,4 @@
-import InvalidUuidError from "../../../errors/invalid-uuid.error.ts";
+import InvalidUuidError from "../../errors/invalid-uuid.error.ts";
 import UniqueEntityId from "../unique-entity-id.vo.ts";
 import { validate as uuidValidate } from "uuid";
 
